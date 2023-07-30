@@ -1,0 +1,384 @@
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+<link rel="stylesheet" href="bootstrap.min.css">
+<link href="app.min.css" rel="stylesheet" type="text/css" id="app-style"/>
+
+<style>
+.vakit-t {
+    font-size: 3vw;
+    text-align: center; 
+    color: #9be192;
+}
+.vakit-n {
+    font-size: 6vw;
+    text-align: center; 
+    color: #38fc1f;
+}
+
+.theTime {
+    font-size: 15vw;
+    text-align: center; 
+    color: #38fc1f;
+}
+.theDate {
+    font-size: 5vw;
+    text-align: center; 
+    color: #9be192;
+}
+.remainT {
+    font-size: 6vw;
+    text-align: center; 
+    color: #a6652c;
+}
+
+.Settings {
+    position:static;
+}
+.bet_time {
+    position:absolute;
+    bottom:0;
+    right:0;
+}
+
+.timeArrived {
+    background-color: #a6652c;
+}
+
+
+</style>
+
+
+
+
+
+
+
+
+<div class="Settings">
+    <!-- stuff -->
+    <p class="bet_time"><a href="config/index.html"><img width=25 height=25 src="img/settings.png"></a></p>
+</div>
+
+
+<body  data-layout-color="dark" data-layout-mode="fluid" >
+
+  <div class="container-fluid">
+        <div class="col">
+        <div class="card">
+            <h2 class="page-title" style="text-align: center; font-size: 5vw; color: #f36b6b">Londra Diyanet Camii</h2>
+        </div>
+      </div>
+
+
+
+      <div class="row">
+        <div class="col">
+        <div class="card">
+            <div id="imsak" style="height: 100%; width: 100%;">
+                <h2 class="page-title vakit-t" >İmsak<br>Fajr</h2><hr>
+                <h2 id="imsak-n" class="page-title vakit-n" >04:53</h2>
+            </div>
+        </div>
+        </div>
+
+        <div class="col">
+        <div class="card">
+            <div id="ogle" style="height: 100%; width: 100%;">
+                <h2 class="page-title vakit-t" >Öğle<br>Zuhr</h2><hr>
+                <h2 id="ogle-n" class="page-title vakit-n" >04:53</h2>
+            </div>
+        </div>
+        </div>
+
+        <div class="col">
+        <div class="card">
+            <div id="ikindi" style="height: 100%; width: 100%;">
+                <h2 class="page-title vakit-t" >İkindi<br>Asr</h2><hr>
+                <h2 id="ikindi-n" class="page-title vakit-n" >04:53</h2>
+            </div>
+        </div>
+        </div>
+
+
+        <div class="col">
+        <div class="card">
+            <div id="aksam" style="height: 100%; width: 100%;">
+                <h2 class="page-title vakit-t" >Akşam<br>Magrib</h2><hr>
+                <h2 id="aksam-n" class="page-title vakit-n" >04:53</h2>
+            </div>
+        </div>
+        </div>
+
+        <div class="col">
+        <div class="card">
+            <div id="yatsi" style="height: 100%; width: 100%;">
+                <h2 class="page-title vakit-t" >Yatsı<br>Isha</h2><hr>
+                <h2 id="yatsi-n" class="page-title vakit-n" >04:53</h2>
+            </div>
+        </div>
+        </div>
+      </div>
+
+
+
+      <div class="row">
+        <div class="col1" style="height: 100%; width: 20%;">
+        <div class="card">
+            <div id="gunes" style="height: 100%; width: 100%;">
+                <h2 class="page-title vakit-t" >Güneş<br>Sunrise</h2><hr>
+                <h2 id="gunes-n" class="page-title vakit-n" >04:53</h2>
+            </div>
+        </div>
+        </div>
+
+
+
+        <div class="col" style="height: 100%; width: 80%;">
+        <div class="card">
+            <div id="saat" style="height: 100%; width: 100%;">
+                <h2 id="remainT" class="page-title remainT" >Remaining </h2><br>
+                <h2 id="theTime" class="page-title theTime" >00:00:00</h2><br>
+                <h2 id="theDate" class="page-title theDate" >01.01.2023</h2>
+            </div>
+        </div>
+        </div>
+      </div>
+
+
+
+
+
+  </div>
+
+
+
+<script>
+function startTime() {
+  const today = new Date();
+  let h = today.getHours();
+  let m = today.getMinutes();
+  let s = today.getSeconds();
+  h = checkTime(h);
+  m = checkTime(m);
+  s = checkTime(s);
+  document.getElementById('theTime').innerHTML =  h + ":" + m + ":" + s;
+
+
+/* date */
+  var dow = [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday"
+    ],
+    moy = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December"
+    ],
+    wday = today.getDay();
+    day = today.getDate();
+    month = today.getMonth();
+    year = today.getYear();
+
+  // store date
+  var currentDate = dow[wday] + ", " + day + " " + moy[month] + " " + (year+1900);
+
+  document.getElementById('theDate').innerHTML = currentDate;
+
+  var currentDateN = checkTime(today.getDate()) + "." + checkTime(today.getMonth()+1) + "." + (year+1900);
+  localStorage.setItem("Date", currentDateN);
+  localStorage.setItem("Time", h + ":" + m + ":" + s);
+
+
+
+
+  /* Setting Backgroun Color of Current Prayer */
+  var tmpTime = h + ":" + m ;
+  if (tmpTime >= document.getElementById('imsak-n').innerHTML){
+        localStorage.setItem("Vakit", "Imsak");
+        document.getElementById("imsak").classList.add("timeArrived");
+        document.getElementById("gunes").classList.remove("timeArrived");
+        document.getElementById("ogle").classList.remove("timeArrived");
+        document.getElementById("ikindi").classList.remove("timeArrived");
+        document.getElementById("aksam").classList.remove("timeArrived");
+        document.getElementById("yatsi").classList.remove("timeArrived");
+  }
+  if (tmpTime >= document.getElementById('gunes-n').innerHTML){
+        localStorage.setItem("Vakit", "Gunes");
+        document.getElementById("gunes").classList.add("timeArrived");
+        document.getElementById("imsak").classList.remove("timeArrived");
+        document.getElementById("ogle").classList.remove("timeArrived");
+        document.getElementById("ikindi").classList.remove("timeArrived");
+        document.getElementById("aksam").classList.remove("timeArrived");
+        document.getElementById("yatsi").classList.remove("timeArrived");
+  }
+  if (tmpTime >= document.getElementById('ogle-n').innerHTML){
+        localStorage.setItem("Vakit", "Ogle");
+        document.getElementById("ogle").classList.add("timeArrived");
+        document.getElementById("imsak").classList.remove("timeArrived");
+        document.getElementById("gunes").classList.remove("timeArrived");
+        document.getElementById("ikindi").classList.remove("timeArrived");
+        document.getElementById("aksam").classList.remove("timeArrived");
+        document.getElementById("yatsi").classList.remove("timeArrived");
+  }
+  if (tmpTime >= document.getElementById('ikindi-n').innerHTML){
+        localStorage.setItem("Vakit", "Ikindi");
+        document.getElementById("ikindi").classList.add("timeArrived");
+        document.getElementById("imsak").classList.remove("timeArrived");
+        document.getElementById("gunes").classList.remove("timeArrived");
+        document.getElementById("ogle").classList.remove("timeArrived");
+        document.getElementById("aksam").classList.remove("timeArrived");
+        document.getElementById("yatsi").classList.remove("timeArrived");
+  }
+  if (tmpTime >= document.getElementById('aksam-n').innerHTML){
+        localStorage.setItem("Vakit", "Aksam");
+        document.getElementById("aksam").classList.add("timeArrived");
+        document.getElementById("imsak").classList.remove("timeArrived");
+        document.getElementById("gunes").classList.remove("timeArrived");
+        document.getElementById("ogle").classList.remove("timeArrived");
+        document.getElementById("ikindi").classList.remove("timeArrived");
+        document.getElementById("yatsi").classList.remove("timeArrived");
+  }
+  if ((tmpTime >= document.getElementById('yatsi-n').innerHTML) || (tmpTime < document.getElementById('imsak-n').innerHTML)){
+        localStorage.setItem("Vakit", "Yatsi");
+        document.getElementById("yatsi").classList.add("timeArrived");
+        document.getElementById("imsak").classList.remove("timeArrived");
+        document.getElementById("gunes").classList.remove("timeArrived");
+        document.getElementById("ogle").classList.remove("timeArrived");
+        document.getElementById("ikindi").classList.remove("timeArrived");
+        document.getElementById("aksam").classList.remove("timeArrived");
+  }
+
+
+
+
+
+  /* Time Remaining for Net Prayer */
+
+
+  t1 = new Date();
+
+  if (localStorage.getItem("Vakit") == "Ogle"){
+    t2 = new Date((t1.getYear()+1900) + "." + checkTime(t1.getMonth()+1) + "." + checkTime(t1.getDate()) + " " + document.getElementById('ikindi-n').innerHTML+":00");
+  }
+  if (localStorage.getItem("Vakit") == "Ikindi"){
+    t2 = new Date((t1.getYear()+1900) + "." + checkTime(t1.getMonth()+1) + "." + checkTime(t1.getDate()) + " " + document.getElementById('aksam-n').innerHTML+":00");
+  }
+  if (localStorage.getItem("Vakit") == "Aksam"){
+    t2 = new Date((t1.getYear()+1900) + "." + checkTime(t1.getMonth()+1) + "." + checkTime(t1.getDate()) + " " + document.getElementById('yatsi-n').innerHTML+":00");
+  }
+  if (localStorage.getItem("Vakit") == "Yatsi"){
+    t2 = new Date((t1.getYear()+1900) + "." + checkTime(t1.getMonth()+1) + "." + checkTime(t1.getDate()) + " " + document.getElementById('imsak-n').innerHTML+":00");
+  }
+  if (localStorage.getItem("Vakit") == "Imsak"){
+    t2 = new Date((t1.getYear()+1900) + "." + checkTime(t1.getMonth()+1) + "." + checkTime(t1.getDate()) + " " + document.getElementById('gunes-n').innerHTML+":00");
+  }
+  if (localStorage.getItem("Vakit") == "Gunes"){
+    t2 = new Date((t1.getYear()+1900) + "." + checkTime(t1.getMonth()+1) + "." + checkTime(t1.getDate()) + " " + document.getElementById('ogle-n').innerHTML+":00");
+  }
+
+
+  diff = t2-t1;
+  dMins = Math.floor(diff/60000);
+  dHours = Math.floor(dMins/60);
+
+  Mins = dMins-(dHours*60);
+  Sec = t1.getSeconds();
+
+  localStorage.setItem("RemainingTime", checkTime(dHours)+":"+checkTime(Mins)+":"+checkTime((59-Sec)));
+
+
+  document.getElementById('remainT').innerHTML = "Remaining " + localStorage.getItem("RemainingTime");
+
+
+  setTimeout(startTime, 1000);
+
+
+}
+
+function checkTime(i) {
+  if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+  return i;
+}
+
+startTime();
+
+</script>
+
+
+
+                <script>
+
+                    function LoadTimes(){
+                        if (!localStorage.getItem("PrayerTimes")){
+                            location.href = "config/index.html";
+                            return;
+                        }
+                        PrayerTimes=JSON.parse(localStorage.getItem("PrayerTimes"));
+                        let i=0;
+                        while (true) {
+                            if (PrayerTimes[i][0] == localStorage.getItem("Date")){
+                                document.getElementById('imsak-n').innerHTML = PrayerTimes[i][1];
+                                document.getElementById('gunes-n').innerHTML = PrayerTimes[i][2];
+                                document.getElementById('ogle-n').innerHTML = PrayerTimes[i][3];
+                                document.getElementById('ikindi-n').innerHTML = PrayerTimes[i][4];
+                                document.getElementById('aksam-n').innerHTML = PrayerTimes[i][5];
+                                document.getElementById('yatsi-n').innerHTML = PrayerTimes[i][6];
+                             
+
+                                break;
+                            }
+                            i++;
+                        }
+                    }
+
+                LoadTimes();
+
+                </script>
+
+
+
+
+
+<script src="bootstrap.min.js"></script>
+<script src="canvasjs.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+ 
+</body></html>
+
