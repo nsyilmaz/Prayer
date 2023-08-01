@@ -200,6 +200,10 @@ function startTime() {
   document.getElementById('theDate').innerHTML = currentDate;
 
   var currentDateN = checkTime(today.getDate()) + "." + checkTime(today.getMonth()+1) + "." + (year+1900);
+  if (localStorage.getItem("Date") != currentDateN){
+        localStorage.setItem("Date", currentDateN);
+        LoadTimes();
+  }
   localStorage.setItem("Date", currentDateN);
   localStorage.setItem("Time", h + ":" + m + ":" + s);
 
@@ -293,6 +297,12 @@ function startTime() {
 
 
   diff = t2-t1;
+
+  if ((localStorage.getItem("Vakit") == "Yatsi") && (localStorage.getItem("Time") > (document.getElementById('imsak-n').innerHTML+":00"))){
+    diff += 24*60*60*1000;
+  }
+
+
   dMins = Math.floor(diff/60000);
   dHours = Math.floor(dMins/60);
 
@@ -317,11 +327,11 @@ function checkTime(i) {
 
 startTime();
 
-</script>
 
 
 
-                <script>
+
+
 
                     function LoadTimes(){
                         if (!localStorage.getItem("PrayerTimes")){
@@ -347,6 +357,18 @@ startTime();
                     }
 
                 LoadTimes();
+
+
+
+
+
+</script>
+
+
+
+                <script>
+
+
 
                 </script>
 
