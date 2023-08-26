@@ -14,8 +14,16 @@
 
 
                 <script>
+
+
                     function MainDisplay(){
 		        location.href = "../index.html";
+                        localStorage.setItem("MosqueName", document.getElementById('mosqueN').value);
+                        localStorage.setItem("ScrollMessage", document.getElementById('scrollM').value);
+                        localStorage.setItem("StaticMessage", document.getElementById('staticM').value);
+                        localStorage.setItem("MessageDuration", document.getElementById('mDuration').value);
+                        localStorage.setItem("ScreenDuration", document.getElementById('sDuration').value);
+
                     }
                     function SaveFile(){
                         localStorage.setItem("PrayerTimes", document.getElementById('result-data').innerText);
@@ -31,8 +39,8 @@
                         PrayerTimes=JSON.parse(localStorage.getItem("PrayerTimes"));
                         let i=0;
                         while (true) {
-                            if (PrayerTimes[i][0] == localStorage.getItem("Date")){
-                                alert("Date:   " + PrayerTimes[i][0] + "\n\n" +
+                            if ((   (PrayerTimes[i][0].split(".")[0] == localStorage.getItem("Date").split(".")[0])   &&   (PrayerTimes[i][0].split(".")[1] == localStorage.getItem("Date").split(".")[1])   )){
+                                alert("Date:   " + localStorage.getItem("Date") + "\n\n" +
                                       "Imsak:  " + PrayerTimes[i][1] + "\n" +
                                       "Gunes:  " + PrayerTimes[i][2] + "\n" +
                                       "Ogle:   " + PrayerTimes[i][3] + "\n" +
@@ -69,9 +77,37 @@
                 <label for="saveFile" class="file-upload" onclick="ShowTimes()">
 			Check Today's times...
 		</label>
+                <br>
+                <br>
+                <div>Name of the Mosque:</div>
+                <input class="mosqueN" id="mosqueN" type=text>
+                <br>
+                <br>
+                <div>Static Message:</div>
+                <input class="staticM" id="staticM" type=text>
+                <br>
+                <br>
+                <div>Scrolling Message:</div>
+                <input class="scrollM" id="scrollM" type=text>
+                <br>
+                <br>
+                <form onsubmit="MainDisplay()" action="../index.html">
+                <div>Message Duration:</div>
+                <input type="number" id="mDuration" value="15" min="15" max="30"> sec.
+                <br>
+                <br>
+                <div>Screen Duration:</div>
+                <input type="number" id="sDuration" value="30" min="30" max="45"> sec.
+                <br>
+                <br>If you do not set Static or Scrolling message, Message screen does not appear.<br>
+                <br>
+                <input type="submit" class="file-upload">
+                </form>
+                <!--
                 <label for="saveFile" class="file-upload" onclick="MainDisplay()">
 			Save and GOTO main display
 		</label>
+                -->
 
 		<div id="loading">
 			<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
@@ -156,6 +192,16 @@
 			    document.getElementById('error').innerText = error.message
 			  })
 			})
+
+
+
+
+
+                    document.getElementById('mosqueN').value = localStorage.getItem("MosqueName");
+                    document.getElementById('staticM').value = localStorage.getItem("StaticMessage");
+                    document.getElementById('scrollM').value = localStorage.getItem("ScrollMessage");
+                    document.getElementById('sDuration').value = localStorage.getItem("ScreenDuration");
+                    document.getElementById('mDuration').value = localStorage.getItem("MessageDuration");
 		</script>
 	
 

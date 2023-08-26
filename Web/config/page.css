@@ -47,6 +47,41 @@
 				color: #fd8900;
 			}
 
+			.mosqueN
+			{
+				letter-spacing: 1px;
+				font-size: 0.75rem;
+				color: #000000;
+				border: 1px solid currentColor;
+				border-radius: 4px;
+				display: inline-block;
+				padding: 6px 12px;
+                                width: 350;
+			}
+
+			.staticM
+			{
+				letter-spacing: 1px;
+				font-size: 0.75rem;
+				color: #000000;
+				border: 1px solid currentColor;
+				border-radius: 4px;
+				display: inline-block;
+				padding: 6px 12px;
+                                width: 350;
+			}
+			.scrollM
+			{
+				letter-spacing: 1px;
+				font-size: 0.75rem;
+				color: #000000;
+				border: 1px solid currentColor;
+				border-radius: 4px;
+				display: inline-block;
+				padding: 6px 12px;
+                                width: 350;
+			}
+
 			.file-upload
 			{
 				text-transform: uppercase;

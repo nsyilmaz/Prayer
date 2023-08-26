@@ -17,12 +17,12 @@
 }
 
 .theTime {
-    font-size: 15vw;
+    font-size: 13vw;
     text-align: center; 
     color: #38fc1f;
 }
 .theDate {
-    font-size: 5vw;
+    font-size: 4vw;
     text-align: center; 
     color: #9be192;
 }
@@ -44,6 +44,12 @@
 .timeArrived {
     background-color: #a6652c;
 }
+.hideMessage {
+    visibility: hidden;
+}
+.showMessage {
+    visibility: visible;
+}
 
 
 </style>
@@ -51,6 +57,17 @@
 
 
 
+<body  data-layout-color="dark" data-layout-mode="fluid" >
+
+
+<div id="messageCard" class="hideMessage" style="z-index:100;position: absolute; width: 100%; height: 100%;" >
+        <div class="card"  style=" width: 100%; height: 100%;">
+            <h2 style="text-align: center;font-size: 10vw;color: #a6652c;margin: auto;width: -webkit-fill-available;" >
+                <div id="staticM">Static test message</div>
+                <marquee id="scrollM" behavior="scroll" direction="left" scrollamount="35">Scrolling test message</marquee>
+            </h2>
+        </div>
+</div>
 
 
 
@@ -61,12 +78,11 @@
 </div>
 
 
-<body  data-layout-color="dark" data-layout-mode="fluid" >
 
   <div class="container-fluid">
         <div class="col">
         <div class="card">
-            <h2 class="page-title" style="text-align: center; font-size: 5vw; color: #f36b6b">Londra Diyanet Camii</h2>
+            <h2 class="page-title" id="mosqueN" style="text-align: center; font-size: 5vw; color: #f36b6b">Londra Diyanet Camii</h2>
         </div>
       </div>
 
@@ -136,7 +152,7 @@
 
         <div class="col" style="height: 100%; width: 80%;">
         <div class="card">
-            <div id="saat" style="height: 100%; width: 100%;">
+            <div id="saat" style="height: 90%; width: 100%;">
                 <h2 id="remainT" class="page-title remainT" >Remaining </h2><br>
                 <h2 id="theTime" class="page-title theTime" >00:00:00</h2><br>
                 <h2 id="theDate" class="page-title theDate" >01.01.2023</h2>
@@ -320,12 +336,51 @@ function startTime() {
 
 }
 
+
+
+let messageDuration = localStorage.getItem("MessageDuration")*1000;
+let screenDuration = localStorage.getItem("ScreenDuration")*1000;
+let showMessage=0;
+let timeOut=messageDuration;
+function toggleMessage(){
+
+  if (!localStorage.getItem("StaticMessage") && !localStorage.getItem("ScrollMessage")){
+      document.getElementById('messageCard').classList.add("hideMessage");
+      document.getElementById('messageCard').classList.remove("showMessage");
+      return;
+  }
+  if (showMessage){
+    document.getElementById('scrollM').start();
+    document.getElementById('messageCard').classList.add("showMessage");
+    document.getElementById('messageCard').classList.remove("hideMessage");
+    showMessage=0;
+    timeOut=messageDuration;
+  }else{
+    document.getElementById('scrollM').stop();
+    document.getElementById('messageCard').classList.add("hideMessage");
+    document.getElementById('messageCard').classList.remove("showMessage");
+    showMessage=1;
+    timeOut=screenDuration;
+  }
+
+
+    setTimeout(toggleMessage, timeOut);
+
+}
+
 function checkTime(i) {
   if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
   return i;
 }
 
+
 startTime();
+toggleMessage()
+
+
+document.getElementById('mosqueN').innerHTML = localStorage.getItem("MosqueName");
+document.getElementById('staticM').innerHTML = localStorage.getItem("StaticMessage");
+document.getElementById('scrollM').innerHTML = localStorage.getItem("ScrollMessage");
 
 
 
@@ -340,8 +395,11 @@ startTime();
                         }
                         PrayerTimes=JSON.parse(localStorage.getItem("PrayerTimes"));
                         let i=0;
+
                         while (true) {
-                            if (PrayerTimes[i][0] == localStorage.getItem("Date")){
+                                                // Yearly all prayer times are same for each date. So we can upload the excell file once and it will work for all years. 
+                                                // Only compare the day and the month, and ignore year. 
+                            if (   (PrayerTimes[i][0].split(".")[0] == localStorage.getItem("Date").split(".")[0])   &&   (PrayerTimes[i][0].split(".")[1] == localStorage.getItem("Date").split(".")[1])   ){
                                 document.getElementById('imsak-n').innerHTML = PrayerTimes[i][1];
                                 document.getElementById('gunes-n').innerHTML = PrayerTimes[i][2];
                                 document.getElementById('ogle-n').innerHTML = PrayerTimes[i][3];
