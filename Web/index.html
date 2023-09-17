@@ -11,13 +11,13 @@
     color: #9be192;
 }
 .vakit-n {
-    font-size: 6vw;
+    font-size: 4vw;
     text-align: center; 
     color: #38fc1f;
 }
 
 .theTime {
-    font-size: 13vw;
+    font-size: 5vw;
     text-align: center; 
     color: #38fc1f;
 }
@@ -27,9 +27,9 @@
     color: #9be192;
 }
 .remainT {
-    font-size: 6vw;
+    font-size: 5vw;
     text-align: center; 
-    color: #a6652c;
+    color: #38fc1f;
 }
 
 .Settings {
@@ -50,6 +50,12 @@
 .showMessage {
     visibility: visible;
 }
+.staticM {
+    color: #38fc1f;
+}
+.scrollM {
+    color: #38fc1f;
+}
 
 
 </style>
@@ -63,8 +69,8 @@
 <div id="messageCard" class="hideMessage" style="z-index:100;position: absolute; width: 100%; height: 100%;" >
         <div class="card"  style=" width: 100%; height: 100%;">
             <h2 style="text-align: center;font-size: 10vw;color: #a6652c;margin: auto;width: -webkit-fill-available;" >
-                <div id="staticM">Static test message</div>
-                <marquee id="scrollM" behavior="scroll" direction="left" scrollamount="35">Scrolling test message</marquee>
+                <div class="staticM" id="staticM">Static test message</div>
+                <marquee class="scrollM" id="scrollM" behavior="scroll" direction="left" scrollamount="35">Scrolling test message</marquee>
             </h2>
         </div>
 </div>
@@ -80,11 +86,76 @@
 
 
   <div class="container-fluid">
+      <div class="row">
         <div class="col">
         <div class="card">
-            <h2 class="page-title" id="mosqueN" style="text-align: center; font-size: 5vw; color: #f36b6b">Londra Diyanet Camii</h2>
+            <h2 class="page-title" id="mosqueN" style="text-align: center; font-size: 4vw; color: #f36b6b">Londra Diyanet Camii</h2>
+        </div>
         </div>
       </div>
+
+
+      <div class="row">
+        <div class="col">
+        <div class="card">
+            <div id="imsak" style="height: 100%; width: 100%;">
+                <h2 class="page-title vakit-t" >İmsak<br>Fajr</h2><hr>
+                <h2 id="imsak-n" class="page-title vakit-n" >04:53</h2>
+            </div>
+        </div>
+        </div>
+
+        <div class="col">
+        <div class="card">
+            <div id="gunes" style="height: 100%; width: 100%;">
+                <h2 class="page-title vakit-t" >Güneş<br>Sunrise</h2><hr>
+                <h2 id="gunes-n" class="page-title vakit-n" >04:53</h2>
+            </div>
+        </div>
+        </div>
+
+        <div class="col">
+        <div class="card">
+            <div id="ogle" style="height: 100%; width: 100%;">
+                <h2 class="page-title vakit-t" >Öğle<br>Zuhr</h2><hr>
+                <h2 id="ogle-n" class="page-title vakit-n" >04:53</h2>
+            </div>
+        </div>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col">
+        <div class="card">
+            <div id="ikindi" style="height: 100%; width: 100%;">
+                <h2 class="page-title vakit-t" >İkindi<br>Asr</h2><hr>
+                <h2 id="ikindi-n" class="page-title vakit-n" >04:53</h2>
+            </div>
+        </div>
+        </div>
+
+
+        <div class="col">
+        <div class="card">
+            <div id="aksam" style="height: 100%; width: 100%;">
+                <h2 class="page-title vakit-t" >Akşam<br>Magrib</h2><hr>
+                <h2 id="aksam-n" class="page-title vakit-n" >04:53</h2>
+            </div>
+        </div>
+        </div>
+
+        <div class="col">
+        <div class="card">
+            <div id="yatsi" style="height: 100%; width: 100%;">
+                <h2 class="page-title vakit-t" >Yatsı<br>Isha</h2><hr>
+                <h2 id="yatsi-n" class="page-title vakit-n" >04:53</h2>
+            </div>
+        </div>
+        </div>
+      </div>
+
+<!--
 
 
 
@@ -136,8 +207,6 @@
         </div>
       </div>
 
-
-
       <div class="row">
         <div class="col1" style="height: 100%; width: 20%;">
         <div class="card">
@@ -160,8 +229,38 @@
         </div>
         </div>
       </div>
+-->
+
+      <div class="row">
+        <div class="col" style="height: 100%; width: 50%;">
+        <div class="card">
+            <div id="saat" style="height: 90%; width: 100%;">
+                <h2 id="remainT" class="page-title remainT" >Remaining 00:00:00</h2><br>
+            </div>
+        </div>
+        </div>
 
 
+
+        <div class="col" style="height: 100%; width: 50%;">
+        <div class="card">
+            <div id="saat" style="height: 90%; width: 100%;">
+                <h2 id="theTime" class="page-title theTime" >Time 00:00:00</h2><br>
+            </div>
+        </div>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col" style="height: 100%; width: 50%;">
+        <div class="card">
+            <div id="saat" style="height: 90%; width: 100%;">
+                <h2 id="theDate" class="page-title theDate" >01.01.2023</h2>
+            </div>
+        </div>
+        </div>
+      </div>
 
 
 
@@ -178,7 +277,6 @@ function startTime() {
   h = checkTime(h);
   m = checkTime(m);
   s = checkTime(s);
-  document.getElementById('theTime').innerHTML =  h + ":" + m + ":" + s;
 
 
 /* date */
@@ -328,7 +426,8 @@ function startTime() {
   localStorage.setItem("RemainingTime", checkTime(dHours)+":"+checkTime(Mins)+":"+checkTime((59-Sec)));
 
 
-  document.getElementById('remainT').innerHTML = "Remaining " + localStorage.getItem("RemainingTime");
+  document.getElementById('remainT').innerHTML = "Remaining<br>" + localStorage.getItem("RemainingTime");
+  document.getElementById('theTime').innerHTML =  "Time<br>" + localStorage.getItem("Time");
 
 
   setTimeout(startTime, 1000);
