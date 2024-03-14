@@ -5,31 +5,43 @@
 <link href="app.min.css" rel="stylesheet" type="text/css" id="app-style"/>
 
 <style>
-.vakit-t {
-    font-size: 3vw;
-    text-align: center; 
-    color: #9be192;
+.mosque-n {
+    color: #d92f2f;
+    //color: #f36b6b
 }
-.vakit-n {
+.vakit-t {
     font-size: 4vw;
     text-align: center; 
-    color: #38fc1f;
+    color: #2a6fe6;
+    //color: #9be192;
+}
+.vakit-n {
+    font-size: 5vw;
+    text-align: center; 
+    color: #000000;
+    //color: #fc741f;
+    //color: #fc1f1f;
+    //color: #38fc1f;
 }
 
 .theTime {
-    font-size: 5vw;
+    font-size: 7vw;
     text-align: center; 
-    color: #38fc1f;
+    color: #3bb02c;
+    //color: #38fc1f;
 }
 .theDate {
-    font-size: 4vw;
+    font-size: 2vw;
     text-align: center; 
-    color: #9be192;
+    color: #2a74bc;
+    //color: #9be192;
 }
 .remainT {
-    font-size: 5vw;
+    font-size: 7vw;
     text-align: center; 
-    color: #38fc1f;
+    color: #ff0000;
+    //color: #ff5959;;
+    //color: #38fc1f;
 }
 
 .Settings {
@@ -42,7 +54,8 @@
 }
 
 .timeArrived {
-    background-color: #a6652c;
+    background-color: #a2f698;
+    //background-color: #a6652c;
 }
 .hideMessage {
     visibility: hidden;
@@ -50,8 +63,13 @@
 .showMessage {
     visibility: visible;
 }
+.staticI {
+    color: #2a6fe6;
+    //color: #38fc1f;
+}
 .staticM {
-    color: #38fc1f;
+    color: #2a6fe6;
+    //color: #38fc1f;
 }
 .scrollM {
     color: #38fc1f;
@@ -63,14 +81,15 @@
 
 
 
-<body  data-layout-color="dark" data-layout-mode="fluid" >
+<body  data-layout-color="lite" data-layout-mode="fluid" >
 
 
 <div id="messageCard" class="hideMessage" style="z-index:100;position: absolute; width: 100%; height: 100%;" >
         <div class="card"  style=" width: 100%; height: 100%;">
-            <h2 style="text-align: center;font-size: 10vw;color: #a6652c;margin: auto;width: -webkit-fill-available;" >
+            <h2 style="text-align: center;font-size: 10vw;color: #2a6fe6;margin: auto;width: -webkit-fill-available;" >
                 <div class="staticM" id="staticM">Static test message</div>
                 <marquee class="scrollM" id="scrollM" behavior="scroll" direction="left" scrollamount="35">Scrolling test message</marquee>
+                <img class="staticI" id="staticI" style="height: 80%; width: 80%;"></img>
             </h2>
         </div>
 </div>
@@ -89,7 +108,7 @@
       <div class="row">
         <div class="col">
         <div class="card">
-            <h2 class="page-title" id="mosqueN" style="text-align: center; font-size: 4vw; color: #f36b6b">Londra Diyanet Camii</h2>
+            <h2 class="page-title mosque-n" id="mosqueN" style="text-align: center; font-size: 4vw;">Londra Diyanet Camii</h2>
         </div>
         </div>
       </div>
@@ -99,7 +118,7 @@
         <div class="col">
         <div class="card">
             <div id="imsak" style="height: 100%; width: 100%;">
-                <h2 class="page-title vakit-t" >İmsak<br>Fajr</h2><hr>
+                <h2 class="page-title vakit-t" >İmsak - Fajr</h2><hr>
                 <h2 id="imsak-n" class="page-title vakit-n" >04:53</h2>
             </div>
         </div>
@@ -108,7 +127,7 @@
         <div class="col">
         <div class="card">
             <div id="gunes" style="height: 100%; width: 100%;">
-                <h2 class="page-title vakit-t" >Güneş<br>Sunrise</h2><hr>
+                <h2 class="page-title vakit-t" >Güneş - Sunrise</h2><hr>
                 <h2 id="gunes-n" class="page-title vakit-n" >04:53</h2>
             </div>
         </div>
@@ -117,7 +136,7 @@
         <div class="col">
         <div class="card">
             <div id="ogle" style="height: 100%; width: 100%;">
-                <h2 class="page-title vakit-t" >Öğle<br>Zuhr</h2><hr>
+                <h2 class="page-title vakit-t" >Öğle - Zuhr</h2><hr>
                 <h2 id="ogle-n" class="page-title vakit-n" >04:53</h2>
             </div>
         </div>
@@ -129,7 +148,7 @@
         <div class="col">
         <div class="card">
             <div id="ikindi" style="height: 100%; width: 100%;">
-                <h2 class="page-title vakit-t" >İkindi<br>Asr</h2><hr>
+                <h2 class="page-title vakit-t" >İkindi - Asr</h2><hr>
                 <h2 id="ikindi-n" class="page-title vakit-n" >04:53</h2>
             </div>
         </div>
@@ -139,7 +158,7 @@
         <div class="col">
         <div class="card">
             <div id="aksam" style="height: 100%; width: 100%;">
-                <h2 class="page-title vakit-t" >Akşam<br>Magrib</h2><hr>
+                <h2 class="page-title vakit-t" >Akşam - Magrib</h2><hr>
                 <h2 id="aksam-n" class="page-title vakit-n" >04:53</h2>
             </div>
         </div>
@@ -148,7 +167,7 @@
         <div class="col">
         <div class="card">
             <div id="yatsi" style="height: 100%; width: 100%;">
-                <h2 class="page-title vakit-t" >Yatsı<br>Isha</h2><hr>
+                <h2 class="page-title vakit-t" >Yatsı - Isha</h2><hr>
                 <h2 id="yatsi-n" class="page-title vakit-n" >04:53</h2>
             </div>
         </div>
@@ -441,14 +460,16 @@ let messageDuration = localStorage.getItem("MessageDuration")*1000;
 let screenDuration = localStorage.getItem("ScreenDuration")*1000;
 let showMessage=0;
 let timeOut=messageDuration;
+let imageId=0;
 function toggleMessage(){
 
-  if (!localStorage.getItem("StaticMessage") && !localStorage.getItem("ScrollMessage")){
+  if (!localStorage.getItem("StaticMessage") && !localStorage.getItem("ScrollMessage") && !JSON.parse(localStorage.getItem("Images")).length ){
       document.getElementById('messageCard').classList.add("hideMessage");
       document.getElementById('messageCard').classList.remove("showMessage");
       return;
   }
   if (showMessage){
+    imageId = Math.floor(Math.random() * JSON.parse(localStorage.getItem("Images")).length);;
     document.getElementById('scrollM').start();
     document.getElementById('messageCard').classList.add("showMessage");
     document.getElementById('messageCard').classList.remove("hideMessage");
@@ -462,6 +483,12 @@ function toggleMessage(){
     timeOut=screenDuration;
   }
 
+  if (!JSON.parse(localStorage.getItem("Images")).length ){
+      document.getElementById('staticI').classList.remove("showMessage");
+      document.getElementById('staticI').classList.add("hideMessage");
+  }else{
+      document.getElementById('staticI').src = "messageIMG/"+JSON.parse(localStorage.getItem("Images"))[imageId];
+  }
 
     setTimeout(toggleMessage, timeOut);
 
@@ -475,7 +502,6 @@ function checkTime(i) {
 
 startTime();
 toggleMessage()
-
 
 document.getElementById('mosqueN').innerHTML = localStorage.getItem("MosqueName");
 document.getElementById('staticM').innerHTML = localStorage.getItem("StaticMessage");

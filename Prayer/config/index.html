@@ -23,6 +23,7 @@
                         localStorage.setItem("StaticMessage", document.getElementById('staticM').value);
                         localStorage.setItem("MessageDuration", document.getElementById('mDuration').value);
                         localStorage.setItem("ScreenDuration", document.getElementById('sDuration').value);
+                        localStorage.setItem("Images", JSON.stringify(images));
 
                     }
                     function SaveFile(){
@@ -91,13 +92,88 @@
                 <input class="scrollM" id="scrollM" type=text>
                 <br>
                 <br>
+    		<label for="file-selector" class="file-upload">
+	    	Select Images
+		</label>
+
+  <input type="file" id="file-selector" accept="image/png, image/jpeg"  directory multiple>
+  <div id="imgContainer"></div>
+
+<script>
+//let file;// = event.target.files[0];
+//let output;
+images = [];
+
+
+function createImage(index, file){
+
+
+    const newImg = document.createElement("img");
+    newImg.setAttribute("id", "imgM-"+index);
+    newImg.setAttribute("name", file.name);
+    document.getElementById("imgContainer").appendChild(newImg);
+
+
+
+    const reader = new FileReader();
+    reader.addEventListener('load', event => {
+        output = document.getElementById("imgM-"+index);
+        output.src = event.target.result;
+        images.push(file.name);
+        //alert(JSON.stringify(images));
+    });
+    reader.readAsDataURL(file);
+
+}
+
+function getImageId(item, index) {
+  imageId = index;
+  file = event.target.files[imageId];
+
+  createImage(index, file);
+
+
+}
+
+
+
+      //const status = document.getElementById('status');
+       
+      //alert(output);
+      if (window.FileList && window.File && window.FileReader) {
+        document.getElementById('file-selector').addEventListener('change', event => {
+          //output.src = '';
+          
+          Object.keys(event.target.files).forEach(getImageId);
+         
+
+          
+          /*  File checks...
+          if (!file.type) {
+            status.textContent = 'Error: The File.type property does not appear to be supported on this browser.';
+            return;
+          }
+          if (!file.type.match('image.*')) {
+            status.textContent = 'Error: The selected file does not appear to be an image.'
+            return;
+          }
+          */
+
+          
+        }); 
+      }
+    
+</script>
+
+                <br>
+                <br>
                 <form onsubmit="MainDisplay()" action="../index.html">
                 <div>Message Duration:</div>
-                <input type="number" id="mDuration" value="15" min="15" max="30"> sec.
+                <input type="number" id="mDuration" value="15" min="1" max="30"> sec.
                 <br>
                 <br>
                 <div>Screen Duration:</div>
-                <input type="number" id="sDuration" value="30" min="30" max="45"> sec.
+                <input type="number" id="sDuration" value="30" min="1" max="45"> sec.
                 <br>
                 <br>If you do not set Static or Scrolling message, Message screen does not appear.<br>
                 <br>
