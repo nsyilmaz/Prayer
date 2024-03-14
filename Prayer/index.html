@@ -30,18 +30,20 @@
     color: #3bb02c;
     //color: #38fc1f;
 }
-.theDate {
-    font-size: 2vw;
-    text-align: center; 
-    color: #2a74bc;
-    //color: #9be192;
-}
+
 .remainT {
     font-size: 7vw;
     text-align: center; 
     color: #ff0000;
     //color: #ff5959;;
     //color: #38fc1f;
+}
+
+.theDate {
+    font-size: 2vw;
+    text-align: center; 
+    color: #2a74bc;
+    //color: #9be192;
 }
 
 .Settings {
@@ -174,81 +176,7 @@
         </div>
       </div>
 
-<!--
 
-
-
-      <div class="row">
-        <div class="col">
-        <div class="card">
-            <div id="imsak" style="height: 100%; width: 100%;">
-                <h2 class="page-title vakit-t" >İmsak<br>Fajr</h2><hr>
-                <h2 id="imsak-n" class="page-title vakit-n" >04:53</h2>
-            </div>
-        </div>
-        </div>
-
-        <div class="col">
-        <div class="card">
-            <div id="ogle" style="height: 100%; width: 100%;">
-                <h2 class="page-title vakit-t" >Öğle<br>Zuhr</h2><hr>
-                <h2 id="ogle-n" class="page-title vakit-n" >04:53</h2>
-            </div>
-        </div>
-        </div>
-
-        <div class="col">
-        <div class="card">
-            <div id="ikindi" style="height: 100%; width: 100%;">
-                <h2 class="page-title vakit-t" >İkindi<br>Asr</h2><hr>
-                <h2 id="ikindi-n" class="page-title vakit-n" >04:53</h2>
-            </div>
-        </div>
-        </div>
-
-
-        <div class="col">
-        <div class="card">
-            <div id="aksam" style="height: 100%; width: 100%;">
-                <h2 class="page-title vakit-t" >Akşam<br>Magrib</h2><hr>
-                <h2 id="aksam-n" class="page-title vakit-n" >04:53</h2>
-            </div>
-        </div>
-        </div>
-
-        <div class="col">
-        <div class="card">
-            <div id="yatsi" style="height: 100%; width: 100%;">
-                <h2 class="page-title vakit-t" >Yatsı<br>Isha</h2><hr>
-                <h2 id="yatsi-n" class="page-title vakit-n" >04:53</h2>
-            </div>
-        </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col1" style="height: 100%; width: 20%;">
-        <div class="card">
-            <div id="gunes" style="height: 100%; width: 100%;">
-                <h2 class="page-title vakit-t" >Güneş<br>Sunrise</h2><hr>
-                <h2 id="gunes-n" class="page-title vakit-n" >04:53</h2>
-            </div>
-        </div>
-        </div>
-
-
-
-        <div class="col" style="height: 100%; width: 80%;">
-        <div class="card">
-            <div id="saat" style="height: 90%; width: 100%;">
-                <h2 id="remainT" class="page-title remainT" >Remaining </h2><br>
-                <h2 id="theTime" class="page-title theTime" >00:00:00</h2><br>
-                <h2 id="theDate" class="page-title theDate" >01.01.2023</h2>
-            </div>
-        </div>
-        </div>
-      </div>
--->
 
       <div class="row">
         <div class="col" style="height: 100%; width: 50%;">
@@ -469,7 +397,9 @@ function toggleMessage(){
       return;
   }
   if (showMessage){
-    imageId = Math.floor(Math.random() * JSON.parse(localStorage.getItem("Images")).length);;
+    //imageId = Math.floor(Math.random() * JSON.parse(localStorage.getItem("Images")).length);
+    imageId = (imageId+1) % JSON.parse(localStorage.getItem("Images")).length;
+    console.log(imageId);
     document.getElementById('scrollM').start();
     document.getElementById('messageCard').classList.add("showMessage");
     document.getElementById('messageCard').classList.remove("hideMessage");
