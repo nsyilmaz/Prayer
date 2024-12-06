@@ -1,0 +1,180 @@
+			body
+			{
+				margin : 20px;
+				font-family : Arial, Helvetica;
+				background: #434343;
+				color: #dddddd;
+			}
+
+			#input
+			{
+				margin-top    : 20px;
+				margin-bottom : 10px;
+			}
+
+
+			#result-table table
+			{
+				width : 100%;
+				border-collapse : collapse;
+				margin-top    : 2.5em;
+				margin-bottom : 2.5em;
+				font-size     : 12px;
+  		}
+
+			#result-table table td
+			{
+				border : 1px solid black;
+				padding : 0.5em;
+
+				text-overflow : ellipsis;
+				overflow      : hidden;
+				max-width     : 10em;
+				white-space   : nowrap;
+			}
+
+			#main-link
+			{
+				display     : block;
+				font-size   : 24px;
+				color       : #fd8900;
+				font-family : monospace;
+				text-decoration : none;
+			}
+
+			a
+			{
+				color: #fd8900;
+			}
+
+			.mosqueN
+			{
+				letter-spacing: 1px;
+				font-size: 0.75rem;
+				color: #000000;
+				border: 1px solid currentColor;
+				border-radius: 4px;
+				display: inline-block;
+				padding: 6px 12px;
+                                width: 350;
+			}
+
+			.staticM
+			{
+				letter-spacing: 1px;
+				font-size: 0.75rem;
+				color: #000000;
+				border: 1px solid currentColor;
+				border-radius: 4px;
+				display: inline-block;
+				padding: 6px 12px;
+                                width: 350;
+			}
+			.scrollM
+			{
+				letter-spacing: 1px;
+				font-size: 0.75rem;
+				color: #000000;
+				border: 1px solid currentColor;
+				border-radius: 4px;
+				display: inline-block;
+				padding: 6px 12px;
+                                width: 350;
+			}
+
+			.file-upload
+			{
+				text-transform: uppercase;
+				letter-spacing: 1px;
+				font-size: 0.75rem;
+				color: #fd8900;
+				border: 1px solid currentColor;
+				border-radius: 4px;
+				display: inline-block;
+				padding: 6px 12px;
+				cursor: pointer;
+			}
+
+			.file-upload:active
+			{
+				color: black;
+				font-weight: bolder;
+				background-color: #fd8900;
+			}
+
+			input[type="file"]
+			{
+				display: none;
+			}
+
+			#result,
+			#error,
+			#loading
+			{
+				display: none;
+				margin-top: 2.5rem;
+			}
+
+			#error
+			{
+				color: #ff7979;
+			}
+
+			/* Loading Indicator */
+			/* https://loading.io/css/ */
+			.lds-ellipsis {
+				display: inline-block;
+				position: relative;
+				width: 40px;
+				height: 40px;
+			}
+			.lds-ellipsis div {
+				position: absolute;
+				top: 16px;
+				width: 7px;
+				height: 7px;
+				border-radius: 50%;
+				background: #fff;
+				animation-timing-function: cubic-bezier(0, 1, 1, 0);
+			}
+			.lds-ellipsis div:nth-child(1) {
+				left: 4px;
+				animation: lds-ellipsis1 0.6s infinite;
+			}
+			.lds-ellipsis div:nth-child(2) {
+				left: 4px;
+				animation: lds-ellipsis2 0.6s infinite;
+			}
+			.lds-ellipsis div:nth-child(3) {
+				left: 16px;
+				animation: lds-ellipsis2 0.6s infinite;
+			}
+			.lds-ellipsis div:nth-child(4) {
+				left: 28px;
+				animation: lds-ellipsis3 0.6s infinite;
+			}
+			@keyframes lds-ellipsis1 {
+				0% {
+					transform: scale(0);
+				}
+				100% {
+					transform: scale(1);
+				}
+			}
+				@keyframes lds-ellipsis3 {
+				0% {
+					transform: scale(1);
+				}
+				100% {
+					transform: scale(0);
+				}
+			}
+			@keyframes lds-ellipsis2 {
+				0% {
+					transform: translate(0, 0);
+				}
+				100% {
+					transform: translate(12px, 0);
+				}
+			}
+
